@@ -1,0 +1,498 @@
+<Style>
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #2672EC;
+  background-color: #f1f1f1;
+}
+
+.tab button {
+  width: 32%;
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+.tab button:hover {
+  background-color: #2672EC;
+}
+
+.tab button.active {
+  background-color: #2672EC;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+    
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #2672EC;
+  text-align: center;
+  padding: 8px;
+}
+
+th {
+  background-color: #2672EC;
+  border: 1px solid #2672EC;
+  text-align: center;
+  color: white;
+
+}
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color:#2672EC;
+
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color:  color: white;;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: white;
+  color: #2672EC;
+}
+    
+.bottomnav {
+  overflow: hidden;
+  background-color:white;
+}
+
+.bottomnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  padding-left: 80px;
+}
+
+
+.bottomnav a.active {
+  background-color: white;
+  color:#2672EC;
+}
+.topnav .login-container {
+  float: right;
+}
+
+.topnav .login-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background-color: #2672EC;
+  color: white;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .login-container button:hover {
+  color: black;
+}
+
+.icons{
+padding-top: 20px; 
+padding-right: 400px;
+color:#2672EC;
+float: right;
+font-size: 15px;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</Style>
+
+<script>
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+document.getElementById("defaultOpen").click();
+
+function openTab(evt, tabName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    
+<div class="topnav">
+  <a href="#home">Calendar</a>
+  <a href="#flowboard">FlowBoard</a>
+  <a href="#messages">Messages</a>
+  <a href="#patientclient">Patient/Client</a>
+  <a href="#fees">Fees</a>
+  <a href="modules">Modules</a>
+  <a href="#procedures">Procedures</a>
+  <a href="#administrators">Administrators</a>
+  <a href="#report">Reports</a>
+<div class="login-container">
+  <button type="submit">Logged in as: Administrator</button>
+</div>
+</div>
+        
+<br>
+<br>
+
+<div class="icons">
+<i class="fa fa-plus-square fa-3x fa-pull-left"></i>
+<font color="black">Open Encounters<br>View all encounters(3)</font>
+</div>
+
+<div class="icons">
+<i class="fa fa-address-card fa-3x fa-pull-left"></i>
+<font color="black">Patient: John Doe <br>DOB: 1996-12-05</font>
+</div>
+    
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'demographic')">Patient Demograhic</button>
+  <button class="tablinks" onclick="openTab(event, 'vitals')" id="defaultOpen">Vitals</button>
+  <button class="tablinks" onclick="openTab(event, 'diagtest')">Diagnostic Tests</button>
+</div>
+
+<!-- Tab content -->
+
+
+<div id="demographic" class="tabcontent">
+  <h3>Current Patient</h3>
+<button type="button">Save</button>
+<button type="button">Cancel</button>
+<br>
+<br>
+Demographics
+<hr>
+<div class="bottomnav">
+  <a class="active" href="#Patient">Patient</a>
+  <a href="#">Emergency</a>
+  <a href="#">Messages</a>
+  <a href="#">Contact</a>
+  <a href="#fees">Choices</a>
+  <a href="modules">Employer</a>
+  <a href="#procedures">Guardian</a>
+  <a href="#administrators">Misc</a>
+    </div>
+
+<hr>
+
+  <form action="/action_page.php">
+    <label for="fname">Full Name</label>
+    <input type="text" id="fname" name="fullname" placeholder="John Doe">
+    <label for="ssn">SSN</label>
+    <input type="text" id="ssn" name="ssnumber" placeholder="111-11-1111">
+    <label for="dob">DOB</label>
+    <input type="text" id="dob" name="dateofbirth" placeholder="12-05-1996">
+    <label for="martital">Marital Status</label>
+    <select id="marital" name="maritalstatus">
+      <option value="single">Single</option>
+      <option value="divorced">Divorced</option>
+      <option value="nevermarried">Never Married</option>
+     </select>
+    <label for="sex">Sex</label>
+    <select id="sex" name="patientsex">
+      <option value="single">Male</option>
+      <option value="divorced">Female</option>
+     </select>
+      <label for="address">Address</label>
+      <input type="text" id="address" name="fulladdress" placeholder="1000 Hiltop Circle">
+      <label for="city">City</label>
+      <input type="text" id="city" name="patientcity" placeholder="Baltimore">
+      <label for="state">State</label>
+      <input type="text" id="state" name="patientstate" placeholder="Maryland">
+      <label for="zip">Zip</label>
+      <input type="text" id="zip" name="patientzip" placeholder="21250">
+      <label for="phone">Phone</label>
+      <input type="text" id="phone" name="patientphone" placeholder="222-222-2222">
+      <label for="pname">Physician Name</label>
+      <input type="text" id="pname" name="physicianname" placeholder="Doctor">
+      <label for="pphone">Physician Phone</label>
+      <input type="text" id="pphone" name="physicianphone" placeholder="232-223-2223">
+                 
+  </form>
+    
+<br>
+<br>
+Insurance
+<hr>
+<div class="bottomnav">
+  <a class="active" href="#Primary">Primary</a>
+  <a href="#">Secondary</a>
+  <a href="#">Tertiary</a>
+</div>
+<hr>
+    
+<form action="/action_page.php">
+    <label for="iname">Insurance Name</label>
+    <input type="text" id="iname" name="insurancename"  placeholder="Blue Cross Blue Shield">
+    <label for="pname">Plan Name</label>
+    <input type="text" id="pname" name="planname"  placeholder="HMO">
+    <label for="edate">Effective Date</label>
+    <input type="text" id="edate" name="effectivedate"  placeholder="11-04-2019">
+    <label for="groupno">Group Number</label>
+    <input type="text" id="groupno" name="groupnumber" placeholder="BZP22385673">
+    <label for="pono">Policy Number</label>
+    <input type="text" id="pono" name="policynumber"  placeholder="B-2222-2222-22">
+</form>
+    
+</div>
+
+
+<div id="vitals" class="tabcontent">
+ <h3>Vitals</h3>
+ <button type="button">Save</button>
+<button type="button">Cancel</button>
+
+<br>
+<br>
+<br>
+  
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Unit</th>
+    <th>Results recorded:11/20/2019</th>
+
+  </tr>
+  <tr>
+    <td>Weight</td>
+    <td>lbs</td>
+    <td>150</td>
+  </tr>
+  <tr>
+    <td>Height</td>
+    <td>ft</td>
+    <td>5'9</td>
+  </tr>
+  <tr>
+    <td>Body Fat</td>
+    <td>%</td>
+    <td>25</td>
+  </tr>
+  <tr>
+    <td>Respiratory Rate</td>
+    <td>per min</td>
+    <td>20</td>
+  </tr>
+  <tr>
+    <td>Heart Rate</td>
+    <td>per sec</td>
+    <td>80</td>
+  </tr>
+  <tr>
+    <td>Pulse</td>
+    <td>per min</td>
+    <td>80</td>
+  </tr>
+ <tr>
+    <td>Blood Pressure: Systolic</td>
+    <td>mmHg</td>
+    <td>120</td>
+  </tr>
+ <tr>
+    <td>Blood Pressure: Diastolic</td>
+    <td>mmHg</td>
+    <td>80</td>
+  </tr>
+ <tr>
+    <td>Temperature</td>
+     <td>F</td>
+    <td>96.4</td>
+  </tr>
+ <tr>
+    <td>Blood Type</td>
+    <td></td>
+    <td>A</td>
+  </tr>
+</table>  
+<br>
+<br>
+<br>
+
+</div>
+<div id="diagtest" class="tabcontent">
+<h3>Diagnostic Tests</h3>
+<input type="text" placeholder="Blood Test" name="search">
+<select>
+  <option value="filtertype">filter by type:</option>
+  <option value="xray">XRAY</option>
+  <option value="mri">MRI</option>
+  <option value="ct scan">CT SCAN</option>
+  <option value="ekg">EKG</option>
+</select>
+<select>
+  <option value="filterdate">filter by date:</option>
+  <option value="date1">12-02-2019</option>
+  <option value="date2">11-02-2019</option>
+  <option value="date3">10-14-19</option>
+  <option value="date4">09-14-19</option>
+</select>
+    
+<button type="submit">Search</button>
+
+<p>Search Results for "Blood Test":</p>
+  <table>
+  <tr>
+    <th>Blood Test</th>
+    <th>Results</th>
+    <th>Normal Value</th>
+    <th>Date</th>
+
+  </tr>
+  <tr>
+    <td>WBCs (billion/L)</td>
+    <td>8.00</td>
+    <td>3.5-10.5</td>
+    <td>11/02/2019</td>
+  </tr>
+  <tr>
+    <td>Neutrophils(%)</td>
+    <td>62</td>
+    <td>40-70</td>
+    <td>11/02/2019</td>
+  </tr>
+  <tr>
+    <td>Lymphoctyes (%)</td>
+    <td>28</td>
+    <td>25-45</td>
+    <td>11/02/2019</td>
+  </tr>
+  <tr>
+    <td>Monocytes(%)</td>
+    <td>10</td>
+    <td>2-8</td>
+    <td>11/02/2019</td>
+  </tr>
+  <tr>
+    <td>Eosinophils (%)</td>
+    <td>1</td>
+    <td>1-5</td>
+    <td>11/02/2019</td>
+  </tr>
+  <tr>
+    <td>Basophils (%)</td>
+    <td>0</td>
+    <td>0-1</td>
+    <td>11/02/2019</td>
+  </tr>
+ <tr>
+    <td>RBCs (trillion/L)</td>
+    <td>3.84</td>
+    <td>4.3-5.7</td>
+    <td>11/02/2019</td>
+  </tr>
+ <tr>
+    <td>Hb (g/dL)</td>
+    <td>11.7</td>
+    <td>13-47</td>
+    <td>11/02/2019</td>
+  </tr>
+ <tr>
+    <td>Hematocrit (%)</td>
+     <td>137-52</td>
+    <td>137-52</td>
+    <td>11/02/2019</td>
+  </tr>
+ <tr>
+    <td>Platelets (billion/L)</td>
+    <td>262</td>
+    <td>150-450</td>
+    <td>11/02/2019</td>
+  </tr>
+</table>  
+<br>
+<br>
+<br>
+</div>
+    
+</body>
+</html>
